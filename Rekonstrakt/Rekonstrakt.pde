@@ -4,10 +4,9 @@ PImage imgGray;
 PImage imgColor;
 
 int iy = 0;
-int yRange = 5;
+int yRange = 2;
 int searchRange = 600;
-String filename = "serna_111.jpg";
-
+String filename = "22713210_816722305171854_5328921456378110702_o.jpg";
 int[] offsets;
 color[] shiftedPix;
 
@@ -109,4 +108,3 @@ double colorDiff(color c1, color c2){
     double sum = diffR*diffR + diffG*diffG + diffB*diffB;
     return sum;
 }
-

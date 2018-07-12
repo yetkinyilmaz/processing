@@ -105,9 +105,9 @@ void setup() {
 }
 
 void draw() {
-//  background(0);
+  background(0);
   app.update();
-  // syphon.sendScreen();
+  syphon.sendScreen();
 }
 
 void stop() {

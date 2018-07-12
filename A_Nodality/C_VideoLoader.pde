@@ -3,7 +3,7 @@ import processing.video.*;
 class VideoLoader extends Node {
   VideoLoader(PApplet applet) {
 
- //     video = new Capture(applet, width, height);
+    //     video = new Capture(applet, width, height);
     video = new Capture(applet, 320, 240);
 
     addOutputPin("loadedImage", new PImagePin(null));
@@ -12,10 +12,18 @@ class VideoLoader extends Node {
   PImage img;
   PImage lastFrame;
   Capture video;
+  boolean live = false;
 
   void setup() {    
-    video.start();
-    //    img = loadImage("Lenna.png");
+    if (live) video.start();
+    else {
+ //    img = loadImage("hat.png");
+//      img = loadImage("blank_europe_map.gif");
+//      img = loadImage("Lenna.png");
+ //     img = loadImage("hand.jpeg");
+  img = loadImage("AgacMap02_test01.png");
+      img.resize(width,0);
+    }
   }
 
 
