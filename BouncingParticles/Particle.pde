@@ -14,7 +14,7 @@ int jump;
 
   // Another constructor (the one we are using here)
   Particle(PVector l) {
-    acc = new PVector(0,0.05,0);
+    acc = new PVector(0,acceleration,0);
     vel = new PVector(random(-2,2),random(-4,0),0);
     loc = l.get();
     r = 10.0;

@@ -19,8 +19,8 @@ int numPixels;
 PImage background;
 PImage inputSubtracted;
 
-Capture video;
-Movie inputMovie;
+Capture inputMovie;
+//Movie inputMovie;
 
 PImage[] buffer;
 
@@ -43,11 +43,11 @@ boolean kilink = false;
 
 void setup() {
 
-  if(kilink){
-    inputMovie = new Movie(this, "kilink_01.mov");
-  }else{
-   inputMovie = new Movie(this, "smallraw.mov");
-}
+//  if(kilink){
+//    inputMovie = new Movie(this, "kilink_01.mov");
+//  }else{
+//   inputMovie = new Movie(this, "smallraw.mov");
+//}
     size(640, 480, P3D);
   
 
@@ -58,11 +58,11 @@ void setup() {
 
   // This the default video input, see the GettingStartedCapture 
   // example if it creates an error
-  //video = new Capture(this, 160, 120);
+  inputMovie = new Capture(this, width, height);
 
 
 //    inputMovie = new Movie(this, "turist.mp4");
-
+inputMovie.start();
 
   depthMap = new Movie(this, "disp_depth3.mov");
 
@@ -70,13 +70,13 @@ background = createImage(width, height, ARGB);
 inputSubtracted = createImage(width, height, ARGB);
 
   buffer = new PImage[numSlices];
-  inputMovie.speed(1.);
+//  inputMovie.speed(1.);
   depthMap.speed(1.);
 
-  inputMovie.loop();
+//  inputMovie.loop();
   depthMap.loop();
-  inputMovie.volume(0);
-  inputMovie.jump(startFrame);
+//  inputMovie.volume(0);
+//  inputMovie.jump(startFrame);
   depthMap.jump(startDepth);
   // Start capturing the images from the camera 
   
@@ -164,9 +164,9 @@ void draw() {
   inputSubtracted.updatePixels();
     for(int j = 0; j < numSlices-1; ++j){
       if(j+1 < n_filled){
-        buffer[j] = buffer[j+1].copy();
+        buffer[j] = buffer[j+1];
       }else{
-        buffer[j] = inputSubtracted.copy();
+        buffer[j] = inputSubtracted;
       }
     n_filled += 1;
     buffer[numSlices-1] = inputSubtracted;
@@ -243,7 +243,7 @@ void draw() {
 }
 
 void mousePressed() {
-  inputMovie.jump(random(inputMovie.duration()));
+ // inputMovie.jump(random(inputMovie.duration()));
 //  camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 
 }

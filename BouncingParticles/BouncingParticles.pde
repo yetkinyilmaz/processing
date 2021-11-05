@@ -15,9 +15,10 @@ int pace = 2;
 int barrier = 110;
  
  int nsteps = 1000064;
-float elasticity = 0.85;
-int stepThreshold = 500;
+float elasticity = 0.4;
+int stepThreshold = 900;
 int range = 3;
+float acceleration = 0.25;
 
 ParticleSystem ps;
 int counter = 0;
@@ -28,8 +29,7 @@ Capture video;
 
 
 void setup() {
-  size(800, 600, P3D);
-  String[] cameras = Capture.list();
+  size(1280, 720, P3D);
   
   video = new Capture(this, width, height, 24);
   video.start();

@@ -18,10 +18,10 @@ import processing.video.*;
 
 // Main parameters
 float pLife = 90; // Particle lifetime - decrease for performance
-int seedThreshold = 30; // Keep between 100-400
+int seedThreshold = 80; // Keep between 100-400
 int pixelJump = 80; //Increase for better performance, decrease for quality // Not to create a particle for each pixel, but to randomly choose.
 int seedRange = 8; // Search region around a triggering pixel
-int maxParticles = 5000;
+int maxParticles = 1000;
 
 float reloop = 0; // Not used
 float drMax = 50;
@@ -40,8 +40,8 @@ Capture video;
 PImage bkgImage;
 
 void setup() {
-  size(800, 600, P3D);
-  String[] cameras = Capture.list();
+  size(1280, 720, P3D);
+//  String[] cameras = Capture.list();
   
   bkgImage = loadImage("image.png");
   video = new Capture(this, width, height, 24);
@@ -54,14 +54,19 @@ void setup() {
   colorMode(RGB, 255, 255, 255, 100);
   ps = new ParticleSystem(0, new PVector(width/2,height/2,0), 5000);
   smooth();
- 
+   background(0,120,160);
+
 }
 
 void draw() {
   background(0,120,160);
+//tint(255, 3);
+  scale(-1, 1);
 
-  image(video,0,0); 
-  
+  image(video,-width,0); 
+//tint(255, 255);
+
+//image(video,0,0);
   if (video.available()) {
     // When using video to manipulate the screen, use video.available() and
     // video.read() inside the draw() method so that it's safe to draw to the screen
@@ -71,14 +76,16 @@ void draw() {
 //      pixels[i] = color(0,0,0);
 //    }
 
+// if(true){
+
+
     // Amount of movement in the frame
     int movementSum = 0;
 color[] coltemp = new color[height*width];
     for(int iy = 0; iy < height; iy = iy + ((int)random(0,pixelJump))){
       for(int ix = 0; ix < width; ix = ix + ((int)random(0,pixelJump))){
-//  for(int iy = 0; iy < height; iy = iy + 1){
-//      for(int ix = 0; ix < width; ix = ix + 1){ 
-        int i = iy*width+ix;
+
+        int i = iy*width + ix;
         if(i > width * height) continue;
         if(i < 0 ) continue;
             
@@ -180,6 +187,9 @@ ps.run();
  counter++;
 
       seeds.clear();
+      
+ //     popMatrix();
+//  }
 }
 
 float deltaR(int i1, int i2){

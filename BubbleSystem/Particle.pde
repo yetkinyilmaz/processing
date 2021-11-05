@@ -12,6 +12,7 @@ class Particle {
     acc = new PVector(0,0,0);
     vel = new PVector(0,-2.5,0);
     loc = l.get();
+    loc.x =  loc.x - width;
     r = 6.0;
     timer = time;
   }

@@ -10,10 +10,11 @@ int diff;
   
   PixelSeed(int in, int diff, int t){
     i = in;
-    x = i % width;
+    x = (i % width);
     y = (i-x)/width; 
 time = t;
 //i = iy*width+ix;
+println(x);
   }
 
 
@@ -37,8 +38,6 @@ int sumColorDiff(){
       }
     }
 
-
-       println("yes"+sum);
 
 diff = sum;
 return sum;

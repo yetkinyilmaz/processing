@@ -4,9 +4,9 @@ PImage imgGray;
 PImage imgColor;
 
 int iy = 0;
-int yRange = 2;
-int searchRange = 600;
-String filename = "22713210_816722305171854_5328921456378110702_o.jpg";
+int yRange = 5;
+int searchRange = 70;
+String filename = "84358500_2413641898764681_2601109108731936768_n.jpg";
 int[] offsets;
 color[] shiftedPix;
 
